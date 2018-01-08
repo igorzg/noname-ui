@@ -4,5 +4,13 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  routing: {
+    ADMIN: "/admin",
+    LOGIN: "/login"
+  },
+  SESSION_KEY: "u_session_id",
+  services: {
+    USER_API: ""
+  }
 };
