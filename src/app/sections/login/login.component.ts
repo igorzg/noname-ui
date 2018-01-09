@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
    * @description
    * Logo image path
    */
-  logoImg: string = "/assets/angular.svg";
+  logoImg: string = "assets/angular.svg";
   /**
    * @param {Boolean} hasError
    * @description

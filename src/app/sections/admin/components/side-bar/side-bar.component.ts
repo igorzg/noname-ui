@@ -27,7 +27,7 @@ export class SideBarComponent {
    * @description
    * Brand image
    */
-  brandImage: string = "/assets/angular.svg";
+  brandImage: string = "assets/angular.svg";
   /**
    * @param {Boolean} showNavBar
    * @description

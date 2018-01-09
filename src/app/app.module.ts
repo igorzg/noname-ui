@@ -19,13 +19,7 @@ import {Authentication} from "./services/authentication.service";
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      {
-        path: "",
-        pathMatch: "full",
-        redirectTo: "admin"
-      }
-    ]),
+    RouterModule.forRoot([]),
     RootRoutingModule
   ],
   providers: [CommonModule, Authentication],

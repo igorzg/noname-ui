@@ -34,9 +34,9 @@ import {UsersAddComponent} from "./sections/users/add/users-add.component";
           }
         ]
       }
-
     ])
   ],
   providers: [AdminGuardian],
 })
-export class AdminModule {}
+export class AdminModule {
+}
