@@ -6,6 +6,8 @@ import {AppComponent} from './app.component';
 import {RouterModule} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
+import {RootRoutingModule} from "./sections/root-routing.module";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -14,6 +16,7 @@ import {CommonModule} from "@angular/common";
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
       {

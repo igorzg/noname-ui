@@ -3,7 +3,7 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Router} from "@angular/router";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {getCookie, removeCookie} from "../helpers";
+import {getCookie, removeCookie, setCookie} from "../helpers";
 
 
 /**
@@ -20,6 +20,7 @@ export enum AuthStatus {
   LOGIN_ATTEMPT,
   LOGOUT
 }
+
 /**
  * Authentication service
  * @constructor
@@ -59,13 +60,13 @@ export class Authentication {
             removeCookie(environment.SESSION_KEY);
             this.authStatus.next(AuthStatus.LOGIN);
           } else {
-            router.navigateByUrl("/admin");
+            router.navigateByUrl(environment.routing.UI.ADMIN);
           }
           break;
         case AuthStatus.INVALID_CREDENTIALS:
         case AuthStatus.LOGOUT:
           removeCookie(environment.SESSION_KEY);
-          router.navigateByUrl("/login");
+          router.navigateByUrl(environment.routing.UI.LOGIN);
           break;
       }
     });
@@ -86,7 +87,7 @@ export class Authentication {
    * Return service api url
    */
   private getServiceAPI(): string {
-    return environment.services.USER_API;
+    return environment.API_HOSTS.USERS;
   }
 
   /**
@@ -108,34 +109,43 @@ export class Authentication {
    * authenticate to system via username and password
    */
   doLogin(username: string, password: string): Promise<AuthStatus> {
-    return new Promise((resolve, reject) => {
-      let options = {
-        headers: new HttpHeaders()
-      };
-      options.headers.set("Content-Type", "application/json");
-      this.authStatus.next(AuthStatus.LOGIN_ATTEMPT);
-      this.http.post(
-        this.getServiceAPI() + "/authenticate",
-        JSON.stringify({
-          username: username,
-          password: password
-        }),
-        options
-      )
-        .map(item => item.json())
-        .subscribe(
-          (data: any) => {
-            setCookie(environment.SESSION_KEY, data.token, 14);
-            setTimeout(() => this.authStatus.next(AuthStatus.LOGGED_IN), 100);
-            resolve(AuthStatus.LOGGED_IN);
-          },
-          () => {
-            this.authStatus.next(AuthStatus.INVALID_CREDENTIALS);
-            reject(AuthStatus.INVALID_CREDENTIALS);
-          }
-        );
-    });
+    // @todo remove this later
+    return this.doFakeLogin();
 
+    // return new Promise((resolve, reject) => {
+    //   let options = {
+    //     headers: new HttpHeaders()
+    //   };
+    //   options.headers.set("Content-Type", "application/json");
+    //   this.authStatus.next(AuthStatus.LOGIN_ATTEMPT);
+    //   this.http.post(
+    //     this.getServiceAPI() + environment.routing.API.USER.AUTHENTICATE,
+    //     JSON.stringify({
+    //       username: username,
+    //       password: password
+    //     }),
+    //     options
+    //   )
+    //     .subscribe(
+    //       (json: any) => {
+    //         let data = JSON.parse(json);
+    //         setCookie(environment.SESSION_KEY, data.token, environment.SESSION_EXPIRE_IN_DAYS);
+    //         setTimeout(() => this.authStatus.next(AuthStatus.LOGGED_IN), 100);
+    //         resolve(AuthStatus.LOGGED_IN);
+    //       },
+    //       () => {
+    //         this.authStatus.next(AuthStatus.INVALID_CREDENTIALS);
+    //         reject(AuthStatus.INVALID_CREDENTIALS);
+    //       }
+    //     );
+    // });
+
+  }
+
+  doFakeLogin() {
+    setCookie(environment.SESSION_KEY, "LOGGEDIN", environment.SESSION_EXPIRE_IN_DAYS);
+    setTimeout(() => this.authStatus.next(AuthStatus.LOGGED_IN), 100);
+    return Promise.resolve(AuthStatus.LOGGED_IN);
   }
 
   /**

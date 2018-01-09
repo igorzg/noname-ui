@@ -3,14 +3,26 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
+const USER_API = "http://localhost:9000";
+const ROUTING = {
+  UI: {
+    ADMIN: "/admin",
+    LOGIN: "/login",
+    LOGOUT: "/logout"
+  },
+  API: {
+    USER: {
+      AUTHENTICATE: "/authenticate"
+    }
+  }
+};
+
 export const environment = {
   production: false,
-  routing: {
-    ADMIN: "/admin",
-    LOGIN: "/login"
-  },
+  routing: ROUTING,
+  SESSION_EXPIRE_IN_DAYS: 14,
   SESSION_KEY: "u_session_id",
-  services: {
-    USER_API: ""
+  API_HOSTS: {
+    USERS: USER_API
   }
 };
