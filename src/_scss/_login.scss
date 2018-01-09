@@ -10,5 +10,14 @@
 }
 
 .login-container {
-  margin-top: 50px;
+  .login-row {
+    .login-col {
+       margin-top: 124px;
+      form {
+        label {
+          color: #fff;
+        }
+      }
+    }
+  }
 }

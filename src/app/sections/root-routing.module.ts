@@ -7,7 +7,6 @@ import {Authentication} from "../services/authentication.service";
   imports: [
     LoginModule,
     AdminModule
-  ],
-  providers: [Authentication]
+  ]
 })
 export class RootRoutingModule {}

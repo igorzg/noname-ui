@@ -14,3 +14,13 @@ $icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/" !defau
   margin-right: 0;
   margin-left: 0;
 }
+
+body.login {
+  background: url("/assets/bg.png") fixed center center no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+.image-center {
+  text-align: center;
+}
