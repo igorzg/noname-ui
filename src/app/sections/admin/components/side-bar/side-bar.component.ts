@@ -15,7 +15,7 @@ import {LinkMenuModel} from "./link-menu.model";
   selector: "side-bar",
   templateUrl: "side-bar.component.html"
 })
-export class SideBarComponent {
+export class SideBarComponent implements OnInit {
 
 
   /**
@@ -82,6 +82,11 @@ export class SideBarComponent {
   ];
 
   constructor(private auth: Authentication) {
+  }
+
+  // @todo implement menu logic
+  ngOnInit() {
+
   }
 
   /**
