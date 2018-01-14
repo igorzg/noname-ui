@@ -24,8 +24,26 @@
     <div class="side-menu-container">
       <ul class="nav navbar-nav" [ngClass]="{'slide-in': isNavBarToggled}">
 
-        <li routerLinkActive="active"><a routerLink="/admin/list" ><span class="glyphicon glyphicon-send"></span>List users</a></li>
-        <li routerLinkActive="active"><a routerLink="/admin/add" ><span class="glyphicon glyphicon-user"></span>Add user</a></li>
+        <!-- Dropdown-->
+        <li class="panel panel-default dropdown">
+          <a href="#" (click)="toggleSubMenu($event)">
+            <span class="glyphicon glyphicon-user"></span>Users
+            <span class="glyphicon caret-right"
+                  [ngClass]="{'glyphicon-triangle-left': !isSubMenuToggled, 'glyphicon-triangle-bottom': isSubMenuToggled}"></span>
+          </a>
+          <div class="panel-collapse collapse" [ngClass]="{'in': isSubMenuToggled}">
+            <div class="panel-body">
+              <ul class="nav navbar-nav">
+                <li><a routerLink="/admin/users">List</a></li>
+                <li><a routerLink="/admin/users/add">Add</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <a routerLink="/admin/add"><span class="glyphicon glyphicon-user"></span>Add user</a>
+        </li>
 
         <!-- Dropdown-->
         <li class="panel panel-default dropdown">

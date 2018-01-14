@@ -20,16 +20,16 @@ import {UsersAddComponent} from "./sections/users/add/users-add.component";
         component: AdminComponent,
         children: [
           {
-            path: "list",
+            path: "users",
             component: UsersListComponent
           },
           {
-            path: "add",
+            path: "users/add",
             component: UsersAddComponent
           },
           {
             path: "",
-            redirectTo: "list",
+            redirectTo: "users",
             pathMatch: "full"
           }
         ]

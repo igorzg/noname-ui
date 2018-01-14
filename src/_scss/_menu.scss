@@ -41,9 +41,10 @@
     border-radius: 0;
     background-color: transparent;
     box-shadow: none;
-    .caret {
+    .caret-right {
       float: right;
-      margin: 9px 5px 0;
+      margin: 0 !important;
+      padding: 0 !important;
     }
     .indicator {
       float: right;
