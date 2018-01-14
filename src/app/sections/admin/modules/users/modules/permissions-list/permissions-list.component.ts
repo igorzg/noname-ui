@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {UsersService} from "../services/users.service";
-import {LoggerService} from "../../../../../services/logger.service";
+import {UsersService} from "../../services/users.service";
+import {LoggerService} from "../../../../../../services/logger.service";
 
 /**
  * UsersListComponent
@@ -29,6 +29,10 @@ export class UsersListComponent implements OnInit {
       this.loggerService.log("message", data);
       this.data = data;
     });
+  }
+
+  edit(user_id: number) {
+
   }
 
 }

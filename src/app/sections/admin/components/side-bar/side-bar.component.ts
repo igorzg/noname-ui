@@ -1,5 +1,6 @@
-import {Component, Output, EventEmitter} from "@angular/core";
+import {Component, Output, EventEmitter, OnInit} from "@angular/core";
 import {Authentication} from "../../../../services/authentication.service";
+import {LinkMenuModel} from "./link-menu.model";
 
 /**
  * SideBarComponent
@@ -15,6 +16,8 @@ import {Authentication} from "../../../../services/authentication.service";
   templateUrl: "side-bar.component.html"
 })
 export class SideBarComponent {
+
+
   /**
    * @param {EventEmitter} navBarToggle
    * @description
@@ -39,7 +42,44 @@ export class SideBarComponent {
    * @description
    * Show navigation bar
    */
-  isSubMenuToggled: boolean = false;
+  submenuToggle: Map<number, boolean> = new Map();
+
+  menu: Array<LinkMenuModel> = [
+    new LinkMenuModel(
+      "User management",
+      "glyphicon-user",
+      null,
+      [
+        new LinkMenuModel(
+          "Users",
+          "glyphicon-list",
+          "/admin/users"
+        ),
+        new LinkMenuModel(
+          "Permissions",
+          "glyphicon-list",
+          "/admin/users/permissions"
+        )
+      ]
+    ),
+    new LinkMenuModel(
+      "Permissions",
+      "glyphicon-user",
+      null,
+      [
+        new LinkMenuModel(
+          "View",
+          "glyphicon-list",
+          "/admin/users"
+        ),
+        new LinkMenuModel(
+          "Add",
+          "glyphicon-floppy-save",
+          "/admin/users/add"
+        )
+      ]
+    ),
+  ];
 
   constructor(private auth: Authentication) {
   }
@@ -55,6 +95,16 @@ export class SideBarComponent {
     this.isNavBarToggled = !this.isNavBarToggled;
     this.navBarToggle.next(this.isNavBarToggled);
   }
+
+  /**
+   * Check if is toggled
+   * @param {number} index
+   * @returns {boolean | undefined}
+   */
+  isToggled(index: number) {
+    return this.submenuToggle.get(index);
+  }
+
   /**
    * @function
    * @name SideBarComponent#toggleSubMenu
@@ -62,10 +112,16 @@ export class SideBarComponent {
    * @description
    * Toggle sub menu
    */
-  toggleSubMenu($event) {
+  toggleSubMenu(index: number, $event) {
     $event.preventDefault();
-    this.isSubMenuToggled = !this.isSubMenuToggled;
+    this.submenuToggle.forEach((value, key) => {
+      if (key !== index) {
+        this.submenuToggle.set(key, false);
+      }
+    });
+    this.submenuToggle.set(index, !this.submenuToggle.get(index));
   }
+
   /**
    * @function
    * @name SideBarComponent#doLogout

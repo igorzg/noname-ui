@@ -21,6 +21,17 @@ html, body {
   margin: 0;
 }
 
+.table {
+  .actions {
+    font-size: 20px;
+    a {
+      cursor: pointer;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
 
 login, admin {
   width: inherit;

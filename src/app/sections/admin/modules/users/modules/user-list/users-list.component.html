@@ -1,0 +1,30 @@
+<div class="table-responsive">
+  <h1>List of users:</h1>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of data">
+      <td>{{item.user_id}}</td>
+      <td>{{item.first_name}}</td>
+      <td>{{item.last_name}}</td>
+      <td>{{item.username}}</td>
+      <td>{{item.email}}</td>
+      <td>{{item.gender}}</td>
+      <td class="actions">
+        <a (click)="edit(item.user_id, $event)" class="glyphicon glyphicon-edit"></a>
+        <a (click)="edit(item.user_id, $event)" class="glyphicon glyphicon-trash"></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
