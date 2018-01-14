@@ -1,5 +1,9 @@
 <h1> Angular from Zero to Hero </h1>
-<span *ngFor="let item of data" >{{item.name}}</span>
+
+  <h3>List of users:</h3>
+<p>
+  <span *ngFor="let item of data" >{{item.user_id}} - {{item.username}}</span>
+</p>
 <pre> Resize the screen to view the left slide menu </pre>
 <p>
   Angular is a framework for building client applications in HTML and either

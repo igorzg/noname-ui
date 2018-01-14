@@ -101,7 +101,7 @@ export abstract class HttpService {
           this.patchOptions(options)
         );
       }
-      subscriber.subscribe(observer.next, (data) => {
+      subscriber.subscribe(data => observer.next(data), (data) => {
         if (data.status === 401) {
           this.authenticationService.doLogout();
         }

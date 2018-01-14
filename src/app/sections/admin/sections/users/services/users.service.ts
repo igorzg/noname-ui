@@ -14,7 +14,7 @@ export class UsersService extends HttpService {
     return environment.API_HOSTS.USERS + url;
   }
 
-  list(): Observable<any> {
+  list(page: number = 1, size: number = 20): Observable<any> {
     return this.get("/users", {
       observe: 'response',
       responseType: 'json'

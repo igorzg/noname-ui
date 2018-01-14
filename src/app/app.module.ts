@@ -9,6 +9,7 @@ import {CommonModule} from "@angular/common";
 import {RootRoutingModule} from "./sections/root-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {Authentication} from "./services/authentication.service";
+import {LoggerService} from "./services/logger.service";
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import {Authentication} from "./services/authentication.service";
     RouterModule.forRoot([]),
     RootRoutingModule
   ],
-  providers: [CommonModule, Authentication],
+  providers: [CommonModule, Authentication, LoggerService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
