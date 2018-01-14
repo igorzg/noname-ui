@@ -20,6 +20,7 @@ const ROUTING = {
 
 export const environment = {
   production: false,
+  enableRouterTracing: false,
   routing: ROUTING,
   SESSION_EXPIRE_IN_DAYS: 14,
   SESSION_KEY: "u_session_id",

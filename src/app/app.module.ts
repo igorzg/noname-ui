@@ -10,6 +10,7 @@ import {RootRoutingModule} from "./sections/root-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {Authentication} from "./services/authentication.service";
 import {LoggerService} from "./services/logger.service";
+import {environment} from "../environments/environment";
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import {LoggerService} from "./services/logger.service";
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([], { enableTracing: environment.enableRouterTracing }),
     RootRoutingModule
   ],
   providers: [CommonModule, Authentication, LoggerService],

@@ -4,9 +4,6 @@ import {AdminComponent} from "./admin.component";
 import {AdminGuardian} from "./admin-guardian";
 import {SideBarComponent} from "./components/side-bar/side-bar.component";
 import {CommonModule} from "@angular/common";
-import {UsersListComponent} from "./sections/users/list/users-list.component";
-import {UsersAddComponent} from "./sections/users/add/users-add.component";
-import {UsersModule} from "./sections/users/users.module";
 
 @NgModule({
   declarations: [
@@ -14,7 +11,6 @@ import {UsersModule} from "./sections/users/users.module";
   ],
   imports: [
     CommonModule,
-    UsersModule,
     RouterModule.forChild([
       {
         path: "admin",
@@ -23,11 +19,7 @@ import {UsersModule} from "./sections/users/users.module";
         children: [
           {
             path: "users",
-            component: UsersListComponent
-          },
-          {
-            path: "users/add",
-            component: UsersAddComponent
+            loadChildren: "./modules/users/users.module#UsersModule"
           },
           {
             path: "",
