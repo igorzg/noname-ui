@@ -1,4 +1,4 @@
-import {Inject} from "@angular/core";
+import {Inject, Injectable} from "@angular/core";
 import {HttpClient, HttpEvent, HttpParams, HttpResponse, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {getCookie, isObject, isString, isUndefined} from "../helpers";
@@ -15,21 +15,18 @@ import {OptionsReturnTypes, OptionsTypes} from "./http.interfaces";
  * @description
  * Main service for request handling
  */
+@Injectable()
 export abstract class HttpService {
+
   /**
-   * @param {Http} http
-   * @description
-   * Http handler
-   */
-  @Inject(HttpClient)
-  private httpClient;
-  /**
+   * Constructor
    * @param {Authentication} authenticationService
-   * @description
-   * Authentication service
+   * @param {HttpClient} httpClient
    */
-  @Inject(Authentication)
-  private authenticationService;
+  constructor(
+    private authenticationService: Authentication,
+    protected httpClient: HttpClient
+  ) {}
 
   /**
    * @function

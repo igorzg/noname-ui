@@ -6,13 +6,15 @@ import {SideBarComponent} from "./components/side-bar/side-bar.component";
 import {CommonModule} from "@angular/common";
 import {UsersListComponent} from "./sections/users/list/users-list.component";
 import {UsersAddComponent} from "./sections/users/add/users-add.component";
+import {UsersModule} from "./sections/users/users.module";
 
 @NgModule({
   declarations: [
-    AdminComponent, SideBarComponent, UsersListComponent, UsersAddComponent
+    AdminComponent, SideBarComponent
   ],
   imports: [
     CommonModule,
+    UsersModule,
     RouterModule.forChild([
       {
         path: "admin",

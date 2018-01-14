@@ -1,4 +1,5 @@
-import {Component} from "@angular/core";
+import {Component, Inject, OnInit} from "@angular/core";
+import {UsersService} from "../services/users.service";
 
 /**
  * UsersListComponent
@@ -13,4 +14,15 @@ import {Component} from "@angular/core";
   selector: "users-list",
   templateUrl: "users-list.component.html"
 })
-export class UsersListComponent {}
+export class UsersListComponent implements OnInit {
+
+  constructor(private usersService: UsersService) {
+  }
+
+  data: Array<any> = [];
+
+  ngOnInit(): void {
+    this.usersService.list().subscribe(data => this.data = data);
+  }
+
+}

@@ -12,6 +12,7 @@ const ROUTING = {
   },
   API: {
     USER: {
+      LIST: "/users",
       AUTHENTICATE: "/authenticate"
     }
   }
