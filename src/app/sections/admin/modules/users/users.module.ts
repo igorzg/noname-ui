@@ -4,6 +4,8 @@ import {UsersListComponent} from "./modules/user-list/users-list.component";
 import {UsersService} from "./services/users.service";
 import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
+import {PermissionsService} from "./services/permissions.service";
+import {PermissionsListComponent} from "./modules/permissions-list/permissions-list.component";
 
 
 @NgModule({
@@ -15,13 +17,17 @@ import {RouterModule} from "@angular/router";
         component: UsersAddComponent
       },
       {
+        path: "permissions",
+        component: PermissionsListComponent
+      },
+      {
         path: "",
         component: UsersListComponent
       }
     ])
   ],
-  declarations: [UsersListComponent, UsersAddComponent],
-  providers: [UsersService]
+  declarations: [UsersListComponent, PermissionsListComponent, UsersAddComponent],
+  providers: [UsersService, PermissionsService]
 })
 export class UsersModule {
 }

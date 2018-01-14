@@ -1,32 +1,32 @@
 import {Component, OnInit} from "@angular/core";
-import {UsersService} from "../../services/users.service";
 import {LoggerService} from "../../../../../../services/logger.service";
+import {PermissionsService} from "../../services/permissions.service";
 
 /**
- * UsersListComponent
+ * PermissionsListComponent
  * @constructor
  * @function
- * @name UsersListComponent
+ * @name PermissionsListComponent
  *
  * @description
- * User list component
+ * Permissions list component
  */
 @Component({
-  selector: "users-list",
-  templateUrl: "users-list.component.html"
+  selector: "permissions-list",
+  templateUrl: "permissions-list.component.html"
 })
-export class UsersListComponent implements OnInit {
+export class PermissionsListComponent implements OnInit {
 
-  constructor(private usersService: UsersService,
+  constructor(private permissionsService: PermissionsService,
               private loggerService: LoggerService) {
   }
 
   data: Array<any> = [];
 
   ngOnInit(): void {
-    this.usersService.list().subscribe(response => {
+    this.permissionsService.list().subscribe(response => {
       let data = response.body;
-      this.loggerService.log("message", data);
+      this.loggerService.log("permissions list", data);
       this.data = data;
     });
   }
