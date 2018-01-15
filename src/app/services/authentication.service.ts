@@ -109,43 +109,34 @@ export class Authentication {
    * authenticate to system via username and password
    */
   doLogin(username: string, password: string): Promise<AuthStatus> {
-    // @todo remove this later
-    return this.doFakeLogin();
+    return new Promise((resolve, reject) => {
+      let options = {
+        headers: new HttpHeaders()
+      };
+      options.headers.set("Content-Type", "application/json");
+      this.authStatus.next(AuthStatus.LOGIN_ATTEMPT);
+      this.http.post(
+        this.getServiceAPI() + environment.routing.API.USER.AUTHENTICATE,
+        JSON.stringify({
+          username: username,
+          password: password
+        }),
+        options
+      )
+        .subscribe(
+          (json: any) => {
+            let data = JSON.parse(json);
+            setCookie(environment.SESSION_KEY, data.token, environment.SESSION_EXPIRE_IN_DAYS);
+            setTimeout(() => this.authStatus.next(AuthStatus.LOGGED_IN), 100);
+            resolve(AuthStatus.LOGGED_IN);
+          },
+          () => {
+            this.authStatus.next(AuthStatus.INVALID_CREDENTIALS);
+            reject(AuthStatus.INVALID_CREDENTIALS);
+          }
+        );
+    });
 
-    // return new Promise((resolve, reject) => {
-    //   let options = {
-    //     headers: new HttpHeaders()
-    //   };
-    //   options.headers.set("Content-Type", "application/json");
-    //   this.authStatus.next(AuthStatus.LOGIN_ATTEMPT);
-    //   this.http.post(
-    //     this.getServiceAPI() + environment.routing.API.USER.AUTHENTICATE,
-    //     JSON.stringify({
-    //       username: username,
-    //       password: password
-    //     }),
-    //     options
-    //   )
-    //     .subscribe(
-    //       (json: any) => {
-    //         let data = JSON.parse(json);
-    //         setCookie(environment.SESSION_KEY, data.token, environment.SESSION_EXPIRE_IN_DAYS);
-    //         setTimeout(() => this.authStatus.next(AuthStatus.LOGGED_IN), 100);
-    //         resolve(AuthStatus.LOGGED_IN);
-    //       },
-    //       () => {
-    //         this.authStatus.next(AuthStatus.INVALID_CREDENTIALS);
-    //         reject(AuthStatus.INVALID_CREDENTIALS);
-    //       }
-    //     );
-    // });
-
-  }
-
-  doFakeLogin() {
-    setCookie(environment.SESSION_KEY, "LOGGEDIN", environment.SESSION_EXPIRE_IN_DAYS);
-    setTimeout(() => this.authStatus.next(AuthStatus.LOGGED_IN), 100);
-    return Promise.resolve(AuthStatus.LOGGED_IN);
   }
 
   /**
