@@ -124,8 +124,7 @@ export class Authentication {
         options
       )
         .subscribe(
-          (json: any) => {
-            let data = JSON.parse(json);
+          (data: any) => {
             setCookie(environment.SESSION_KEY, data.token, environment.SESSION_EXPIRE_IN_DAYS);
             setTimeout(() => this.authStatus.next(AuthStatus.LOGGED_IN), 100);
             resolve(AuthStatus.LOGGED_IN);
