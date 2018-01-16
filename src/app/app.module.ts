@@ -21,7 +21,9 @@ import {environment} from "../environments/environment";
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([], { enableTracing: environment.enableRouterTracing }),
+    RouterModule.forRoot([], {
+      enableTracing: environment.enableRouterTracing
+    }),
     RootRoutingModule
   ],
   providers: [CommonModule, Authentication, LoggerService],

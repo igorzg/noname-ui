@@ -1,5 +1,5 @@
 import {NgModule} from "@angular/core";
-import {UsersAddComponent} from "./modules/user-add/users-add.component";
+import {UsersFromComponent} from "./modules/user-form/users-form.component";
 import {UsersListComponent} from "./modules/user-list/users-list.component";
 import {UsersService} from "./services/users.service";
 import {CommonModule} from "@angular/common";
@@ -14,7 +14,11 @@ import {PermissionsListComponent} from "./modules/permissions-list/permissions-l
     RouterModule.forChild([
       {
         path: "add",
-        component: UsersAddComponent
+        component: UsersFromComponent
+      },
+      {
+        path: "edit/:id",
+        component: UsersFromComponent
       },
       {
         path: "permissions",
@@ -26,7 +30,7 @@ import {PermissionsListComponent} from "./modules/permissions-list/permissions-l
       }
     ])
   ],
-  declarations: [UsersListComponent, PermissionsListComponent, UsersAddComponent],
+  declarations: [UsersListComponent, PermissionsListComponent, UsersFromComponent],
   providers: [UsersService, PermissionsService]
 })
 export class UsersModule {

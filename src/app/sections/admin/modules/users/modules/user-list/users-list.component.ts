@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {UsersService} from "../../services/users.service";
 import {LoggerService} from "../../../../../../services/logger.service";
+import {Router} from "@angular/router";
 
 /**
  * UsersListComponent
@@ -18,6 +19,7 @@ import {LoggerService} from "../../../../../../services/logger.service";
 export class UsersListComponent implements OnInit {
 
   constructor(private usersService: UsersService,
+              private router: Router,
               private loggerService: LoggerService) {
   }
 
@@ -32,7 +34,7 @@ export class UsersListComponent implements OnInit {
   }
 
   edit(user_id: number) {
-
+    this.router.navigate(["admin/users/edit", user_id]);
   }
 
 }

@@ -33,11 +33,16 @@ html, body {
   }
 }
 
-login, admin {
+login, admin, users-form {
   width: inherit;
   height: inherit;
   display: block;
 }
+
+users-form {
+  margin: 10px;
+}
+
 
 body.login {
   background: url("assets/bg.png") fixed center center no-repeat;
