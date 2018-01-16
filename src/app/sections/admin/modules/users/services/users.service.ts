@@ -21,4 +21,11 @@ export class UsersService extends HttpService {
     });
   }
 
+  getById(user_id: string): Observable<any> {
+    return this.get("/users/" + user_id, {
+      observe: 'response',
+      responseType: 'json'
+    });
+  }
+
 }

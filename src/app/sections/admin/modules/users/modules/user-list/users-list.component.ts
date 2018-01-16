@@ -33,8 +33,8 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-  edit(user_id: number) {
-    this.router.navigate(["admin/users/edit", user_id]);
+  edit(user_id: number): Promise<boolean> {
+    return this.router.navigate(["admin/users/edit", user_id]);
   }
 
 }

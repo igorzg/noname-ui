@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
+import {UsersService} from "../../services/users.service";
 
 /**
  * UsersAddComponent
@@ -18,7 +19,7 @@ export class UsersFromComponent implements OnInit {
 
   private id: string;
 
-  constructor(route: ActivatedRoute) {
+  constructor(route: ActivatedRoute, usersService: UsersService) {
     this.id = route.snapshot.paramMap.get('id');
   }
 
