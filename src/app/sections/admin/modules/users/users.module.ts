@@ -6,11 +6,13 @@ import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {PermissionsService} from "./services/permissions.service";
 import {PermissionsListComponent} from "./modules/permissions-list/permissions-list.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       {
         path: "add",

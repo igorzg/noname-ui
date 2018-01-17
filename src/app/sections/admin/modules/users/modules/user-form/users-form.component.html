@@ -1,20 +1,25 @@
-<form>
+<form [formGroup]="form">
   <h2>User form:</h2>
   <div class="form-group">
     <label for="inputFirstName">First name:</label>
-    <input type="email" class="form-control" id="inputFirstName" placeholder="Type your first name">
+    <input type="email" class="form-control" formControlName="first_name" id="inputFirstName"
+           placeholder="Type your first name" required>
   </div>
   <div class="form-group">
     <label for="inputLastName">Last name:</label>
-    <input type="email" class="form-control" id="inputLastName" placeholder="Type your last name">
+    <input type="email" class="form-control" formControlName="last_name" id="inputLastName"
+           placeholder="Type your last name" required>
   </div>
-   <div class="form-group">
+  <div class="form-group">
     <label for="inputUsername">Username:</label>
-    <input type="email" class="form-control" id="inputUsername" placeholder="Type your username">
+    <input type="email" class="form-control" formControlName="username" id="inputUsername"
+           placeholder="Type your username"
+           required>
   </div>
   <div class="form-group">
     <label for="inputEmail">Email address:</label>
-    <input type="email" class="form-control" id="inputEmail" placeholder="Type your email">
+    <input type="email" class="form-control" formControlName="email" id="inputEmail" placeholder="Type your email"
+           required>
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
