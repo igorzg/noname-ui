@@ -21,7 +21,8 @@ export class Entity<E> {
     return o.map(i => this.fromObj(i));
   }
 
-  fillForm(group: FormGroup) {
+  fillForm(
+    group: FormGroup) {
     Object.keys(this).forEach(key => {
       if (group.get(key)) {
         group.get(key).setValue(this[key]);

@@ -47,6 +47,7 @@ export class UsersFromComponent implements OnInit {
   }
 
   onSubmit() {
+    this.user = this.user.fromObj(this.form.value);
     this.usersService
       .update(this.user)
       .subscribe((response: HttpResponse<Object>) => {
