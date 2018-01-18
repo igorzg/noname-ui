@@ -10,7 +10,7 @@ export class Entity<E> {
     this.fromObj(o);
   }
 
-  fromObj(o: any): E {
+  fromObj(o: any): any {
     Object.keys(o).forEach(k => {
       this[k] = o[k];
     });

@@ -39,7 +39,7 @@ export class UsersFromComponent implements OnInit {
     if (this.id) {
       this.usersService
         .getById(this.id)
-        .subscribe((response: HttpResponse) => {
+        .subscribe((response: HttpResponse<Object>) => {
           this.user = new User(response.body);
           this.user.fillForm(this.form);
         });
