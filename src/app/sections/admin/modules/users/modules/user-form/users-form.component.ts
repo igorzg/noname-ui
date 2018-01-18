@@ -45,4 +45,13 @@ export class UsersFromComponent implements OnInit {
         });
     }
   }
+
+  onSubmit() {
+    this.usersService
+      .update(this.user)
+      .subscribe((response: HttpResponse<Object>) => {
+        console.log('updated', response)
+      });
+
+  }
 }

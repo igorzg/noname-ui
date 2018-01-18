@@ -2,6 +2,7 @@ import {HttpService} from "../../../../../services/http.service";
 import {environment} from "../../../../../../environments/environment";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
+import {User} from "../user.entity";
 
 
 /**
@@ -23,6 +24,13 @@ export class UsersService extends HttpService {
 
   getById(user_id: string): Observable<any> {
     return this.get("/users/" + user_id, {
+      observe: 'response',
+      responseType: 'json'
+    });
+  }
+
+  update(user: User): Observable<any> {
+    return this.put("/users", JSON.stringify(user), {
       observe: 'response',
       responseType: 'json'
     });
