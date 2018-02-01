@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {UsersService} from "../../services/users.service";
 import {User} from "../../user.entity";
 import {FormControl, FormGroup} from "@angular/forms";
@@ -31,7 +31,9 @@ export class UsersFromComponent implements OnInit {
 
   user: User;
 
-  constructor(route: ActivatedRoute, private usersService: UsersService) {
+  constructor(private route: ActivatedRoute,
+              private usersService: UsersService,
+              private router: Router) {
     this.id = route.snapshot.paramMap.get('id');
   }
 
@@ -51,7 +53,8 @@ export class UsersFromComponent implements OnInit {
     this.usersService
       .update(this.user)
       .subscribe((response: HttpResponse<Object>) => {
-        console.log('updated', response)
+        console.log('updated', response);
+        this.router.navigate(["../../"], {relativeTo: this.route})
       });
 
   }
