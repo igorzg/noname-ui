@@ -1,0 +1,52 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body.login {
+  background: url("assets/bg.png") fixed center center no-repeat;
+}
+
+:focus {
+  outline: none;
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.table {
+  .actions {
+    font-size: 20px;
+    a {
+      cursor: pointer;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+login, admin, users-form {
+  width: inherit;
+  height: inherit;
+  display: block;
+}
+
+users-form {
+  margin: 10px;
+}
+
+.admin-body, .admin-container, .side-body {
+  height: inherit;
+}
+
+.image-center {
+  text-align: center;
+}
+
+.loader {
+  background: url("assets/spiner.svg") center center no-repeat;
+}

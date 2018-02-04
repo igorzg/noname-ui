@@ -4,6 +4,7 @@ import {AdminComponent} from "./admin.component";
 import {AdminGuardian} from "./admin-guardian";
 import {SideBarComponent} from "./components/side-bar/side-bar.component";
 import {CommonModule} from "@angular/common";
+import {AdminSideBodyLoaderService} from "./services/loaders";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import {CommonModule} from "@angular/common";
       }
     ])
   ],
-  providers: [AdminGuardian],
+  providers: [AdminSideBodyLoaderService, AdminGuardian],
 })
 export class AdminModule {
 }

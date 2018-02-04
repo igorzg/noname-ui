@@ -2,52 +2,7 @@
 $icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/" !default;
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+@import "_scss/global";
 @import "_scss/login";
 @import "_scss/menu";
 @import "_scss/small";
-
-:focus {
-  outline: none;
-}
-
-.row {
-  margin-right: 0;
-  margin-left: 0;
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-}
-
-.table {
-  .actions {
-    font-size: 20px;
-    a {
-      cursor: pointer;
-      &:hover {
-        text-decoration: none;
-      }
-    }
-  }
-}
-
-login, admin, users-form {
-  width: inherit;
-  height: inherit;
-  display: block;
-}
-
-users-form {
-  margin: 10px;
-}
-
-
-body.login {
-  background: url("assets/bg.png") fixed center center no-repeat;
-}
-
-.image-center {
-  text-align: center;
-}

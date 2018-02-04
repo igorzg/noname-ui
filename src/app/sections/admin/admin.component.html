@@ -1,10 +1,10 @@
-<div class="row">
+<div class="row admin-body">
   <!--<div class="absolute-wrapper">abc </div> -->
   <!-- Menu -->
   <side-bar (toggle)="onNavBarToggle($event)"></side-bar>
   <!-- Main Content -->
-  <div class="container-fluid">
-    <div class="side-body" [ngClass]="{'body-slide-in': showNavBar}">
+  <div class="container-fluid admin-container">
+    <div class="side-body" [ngClass]="{'body-slide-in': showNavBar, 'loader': isLoading}">
         <router-outlet></router-outlet>
     </div>
   </div>
