@@ -5,7 +5,6 @@ import {LoggedInGuard} from "./logged-in-guardian";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {LogoutComponent} from "./logout.component";
-import {environment} from "../../../environments/environment";
 
 
 @NgModule({
@@ -17,12 +16,12 @@ import {environment} from "../../../environments/environment";
     CommonModule,
     RouterModule.forChild([
       {
-        path: environment.routing.UI.LOGIN.slice(1),
+        path: "login",
         canActivate: [LoggedInGuard],
         component: LoginComponent
       },
       {
-        path: environment.routing.UI.LOGOUT.slice(1),
+        path: "logout",
         component: LogoutComponent
       }
     ])
