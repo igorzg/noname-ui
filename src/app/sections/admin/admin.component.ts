@@ -1,7 +1,6 @@
-import {Component, OnDestroy, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 import {SideBarComponent} from "./components/side-bar/side-bar.component";
-import {AdminSideBodyLoaderService, ILoader} from "./services/loaders";
-import {Subscription} from "rxjs/Subscription";
+import {LoaderService} from "./services/loaders";
 
 /**
  * AdminComponent
@@ -16,7 +15,7 @@ import {Subscription} from "rxjs/Subscription";
   selector: "admin",
   templateUrl: "admin.component.html"
 })
-export class AdminComponent implements ILoader {
+export class AdminComponent {
 
 
   /**
@@ -27,27 +26,12 @@ export class AdminComponent implements ILoader {
   showNavBar: boolean = false;
 
   /**
-   * @param {Boolean} isLoading
-   * @description
-   * Show loader
+   * Loader service is forwarded to loader directive
+   * @param {LoaderService} loaderService
    */
-  isLoading: boolean = false;
-
-  events: Array<Subscription> = [];
-
-  constructor(private loader: AdminSideBodyLoaderService) {
-    this.events.push(
-      this.loader.subscribe(isLoading => this.isLoading = isLoading)
-    );
+  constructor(private loaderService: LoaderService) {
   }
 
-  /**
-   * On destroy destroy all refs
-   */
-  ngOnDestroy(): void {
-    this.events.forEach(item => item.unsubscribe());
-    this.events = [];
-  }
 
   /**
    * @function

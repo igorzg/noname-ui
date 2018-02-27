@@ -4,7 +4,7 @@
   <side-bar (toggle)="onNavBarToggle($event)"></side-bar>
   <!-- Main Content -->
   <div class="container-fluid admin-container">
-    <div class="side-body" [ngClass]="{'body-slide-in': showNavBar, 'loader': isLoading}">
+    <div class="side-body" [ngClass]="{'body-slide-in': showNavBar}" [loader]="loaderService">
         <router-outlet></router-outlet>
     </div>
   </div>

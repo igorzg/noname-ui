@@ -4,8 +4,7 @@ import {UsersService} from "../../services/users.service";
 import {User} from "../../user.entity";
 import {FormControl, FormGroup} from "@angular/forms";
 import {HttpResponse} from "@angular/common/http";
-import {AdminSideBodyLoaderService, ILoader} from "../../../../services/loaders";
-import {Subscription} from "rxjs/Subscription";
+import {LoaderService} from "../../../../services/loaders";
 import 'rxjs/add/operator/delay';
 
 /**
@@ -21,7 +20,7 @@ import 'rxjs/add/operator/delay';
   selector: "users-form",
   templateUrl: "users-form.component.html"
 })
-export class UsersFromComponent implements OnInit, ILoader {
+export class UsersFromComponent implements OnInit {
 
   private id: string;
 
@@ -34,43 +33,19 @@ export class UsersFromComponent implements OnInit, ILoader {
 
   user: User;
 
-  events: Array<Subscription> = [];
-  isLoading: boolean = false;
-
   /**
    * Constructor
    * @param {ActivatedRoute} route
    * @param {UsersService} usersService
    * @param {Router} router
-   * @param {AdminSideBodyLoaderService} loader
+   * @param {LoaderService} loader
    */
   constructor(private route: ActivatedRoute,
               private usersService: UsersService,
               private router: Router,
-              private loader: AdminSideBodyLoaderService) {
+              private loader: LoaderService) {
     this.id = route.snapshot.paramMap.get('id');
-
-    /**
-     * Register loader
-     */
-    this.events.push(
-      this.loader.subscribe(isLoading => this.isLoading = isLoading)
-    );
-
-    /**
-     * Show loader
-     */
     this.loader.show();
-
-  }
-
-
-  /**
-   * On destroy destroy all refs
-   */
-  ngOnDestroy(): void {
-    this.events.forEach(item => item.unsubscribe());
-    this.events = [];
   }
 
   /**
@@ -93,12 +68,15 @@ export class UsersFromComponent implements OnInit, ILoader {
    * Save data in to db and navigate back to users list
    */
   onSubmit() {
+    this.loader.show();
     this.user = this.user.fromObj(this.form.value);
     this.usersService
       .update(this.user)
+      .delay(300)
       .subscribe((response: HttpResponse<Object>) => {
-        console.log('updated', response);
-        this.router.navigate(["../../"], {relativeTo: this.route})
+        this.router.navigate(["../../"], {relativeTo: this.route}).then(() => {
+          this.loader.hide();
+        })
       });
 
   }
