@@ -61,6 +61,9 @@ export class UsersFromComponent implements OnInit {
           this.user = new User(response.body);
           this.user.fillForm(this.form);
         });
+    } else {
+      this.loader.hide();
+      this.user = User.new();
     }
   }
 

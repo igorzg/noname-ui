@@ -17,7 +17,10 @@ import {LoaderResolver} from "../../services/loader-resolver";
     RouterModule.forChild([
       {
         path: "add",
-        component: UsersFromComponent
+        component: UsersFromComponent,
+        resolve: {
+          delay: LoaderResolver
+        }
       },
       {
         path: "edit/:id",
