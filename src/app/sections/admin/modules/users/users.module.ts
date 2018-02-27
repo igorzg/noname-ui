@@ -7,6 +7,7 @@ import {RouterModule} from "@angular/router";
 import {PermissionsService} from "./services/permissions.service";
 import {PermissionsListComponent} from "./modules/permissions-list/permissions-list.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {LoaderResolver} from "../../services/loader-resolver";
 
 
 @NgModule({
@@ -24,16 +25,23 @@ import {ReactiveFormsModule} from "@angular/forms";
       },
       {
         path: "permissions",
-        component: PermissionsListComponent
+        component: PermissionsListComponent,
+        resolve: {
+          delay: LoaderResolver
+        }
       },
       {
         path: "",
-        component: UsersListComponent
+        component: UsersListComponent,
+        resolve: {
+          delay: LoaderResolver
+        }
       }
     ])
   ],
   declarations: [UsersListComponent, PermissionsListComponent, UsersFromComponent],
-  providers: [UsersService, PermissionsService]
+  providers: [LoaderResolver, UsersService, PermissionsService]
 })
 export class UsersModule {
 }
+

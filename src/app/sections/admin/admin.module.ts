@@ -4,7 +4,7 @@ import {AdminComponent} from "./admin.component";
 import {AdminGuardian} from "./admin-guardian";
 import {SideBarComponent} from "./components/side-bar/side-bar.component";
 import {CommonModule} from "@angular/common";
-import {LoaderDirective, LoaderService} from "./services/loaders";
+import {LoaderDirective, LoaderService} from "./services/loader-service";
 
 @NgModule({
   declarations: [

@@ -4,8 +4,8 @@ import {UsersService} from "../../services/users.service";
 import {User} from "../../user.entity";
 import {FormControl, FormGroup} from "@angular/forms";
 import {HttpResponse} from "@angular/common/http";
-import {LoaderService} from "../../../../services/loaders";
 import 'rxjs/add/operator/delay';
+import {LoaderService} from "../../../../services/loader-service";
 
 /**
  * UsersAddComponent

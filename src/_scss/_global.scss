@@ -48,5 +48,11 @@ users-form {
 }
 
 .loader {
+  &:before {
+    content: " ";
+    display: table;
+    width: inherit;
+    height: inherit;
+  }
   background: url("assets/spiner.svg") center center no-repeat;
 }

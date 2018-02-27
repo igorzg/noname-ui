@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {SideBarComponent} from "./components/side-bar/side-bar.component";
-import {LoaderService} from "./services/loaders";
+import {LoaderService} from "./services/loader-service";
 
 /**
  * AdminComponent
