@@ -29,6 +29,13 @@ export class UsersService extends HttpService {
     });
   }
 
+  create(user: User): Observable<any> {
+    return this.post("/users", JSON.stringify(user), {
+      observe: 'response',
+      responseType: 'json'
+    });
+  }
+
   update(user: User): Observable<any> {
     return this.put("/users", JSON.stringify(user), {
       observe: 'response',

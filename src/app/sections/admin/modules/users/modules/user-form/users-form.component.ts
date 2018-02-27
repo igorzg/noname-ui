@@ -72,15 +72,25 @@ export class UsersFromComponent implements OnInit {
    */
   onSubmit() {
     this.loader.show();
-    this.user = this.user.fromObj(this.form.value);
-    this.usersService
-      .update(this.user)
-      .delay(300)
-      .subscribe((response: HttpResponse<Object>) => {
-        this.router.navigate(["../../"], {relativeTo: this.route}).then(() => {
-          this.loader.hide();
-        })
-      });
+    if (this.user.isNew()) {
+      this.usersService
+        .create(this.user.fromObj(this.form.value))
+        .delay(300)
+        .subscribe((response: HttpResponse<Object>) => this.goBack());
+    } else {
+      this.usersService
+        .update(this.user.fromObj(this.form.value))
+        .delay(300)
+        .subscribe((response: HttpResponse<Object>) => this.goBack());
+    }
+  }
 
+  /**
+   * Navigate back to list
+   */
+  private goBack() {
+    this.router.navigate(["../../"], {relativeTo: this.route}).then(() => {
+      this.loader.hide();
+    })
   }
 }
