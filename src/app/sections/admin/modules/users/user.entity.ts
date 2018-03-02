@@ -1,4 +1,4 @@
-import {Entity} from "../entity";
+import {Entity} from "../../entity";
 
 export class User extends Entity<User> {
   user_id: number;

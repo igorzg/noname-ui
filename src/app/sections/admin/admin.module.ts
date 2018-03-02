@@ -6,6 +6,7 @@ import {SideBarComponent} from "./components/side-bar/side-bar.component";
 import {CommonModule} from "@angular/common";
 import {LoaderDirective, LoaderService} from "./services/loader-service";
 import {LoaderResolver} from "./services/loader-resolver";
+import {CountryService} from "./services/country.service";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import {LoaderResolver} from "./services/loader-resolver";
       }
     ])
   ],
-  providers: [LoaderService, LoaderResolver, AdminGuardian],
+  providers: [LoaderService, LoaderResolver, CountryService, AdminGuardian],
 })
 export class AdminModule {
 }

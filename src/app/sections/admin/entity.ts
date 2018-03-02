@@ -1,4 +1,4 @@
-import {isArray} from "../../../helpers";
+import {isArray} from "../../helpers";
 import {FormGroup} from "@angular/forms";
 
 export abstract class Entity<E> {
@@ -24,10 +24,6 @@ export abstract class Entity<E> {
       this[k] = o[k];
     });
     return this;
-  }
-
-  fromArray(o: Array<any>): Array<E> {
-    return o.map(i => this.fromObj(i));
   }
 
   fillForm(group: FormGroup) {
