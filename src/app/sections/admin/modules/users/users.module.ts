@@ -43,7 +43,7 @@ import {LoaderResolver} from "../../services/loader-resolver";
     ])
   ],
   declarations: [UsersListComponent, PermissionsListComponent, UsersFromComponent],
-  providers: [LoaderResolver, UsersService, PermissionsService]
+  providers: [ UsersService, PermissionsService]
 })
 export class UsersModule {
 }

@@ -9,4 +9,8 @@ export class User extends Entity<User> {
   birth: string;
   gender: string;
   country_id: number;
+
+  static new(): User {
+    return new User({$_isNew: true});
+  }
 }

@@ -1,10 +1,11 @@
-import {NgModule} from "@angular/core";
+import {ElementRef, NgModule} from "@angular/core";
 import {RouterModule} from "@angular/router";
 import {AdminComponent} from "./admin.component";
 import {AdminGuardian} from "./admin-guardian";
 import {SideBarComponent} from "./components/side-bar/side-bar.component";
 import {CommonModule} from "@angular/common";
 import {LoaderDirective, LoaderService} from "./services/loader-service";
+import {LoaderResolver} from "./services/loader-resolver";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import {LoaderDirective, LoaderService} from "./services/loader-service";
       }
     ])
   ],
-  providers: [LoaderService, AdminGuardian],
+  providers: [LoaderService, LoaderResolver, AdminGuardian],
 })
 export class AdminModule {
 }

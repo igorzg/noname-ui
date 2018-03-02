@@ -1,7 +1,7 @@
 import {isArray} from "../../../helpers";
 import {FormGroup} from "@angular/forms";
 
-export class Entity<E> {
+export abstract class Entity<E> {
 
   private $_isNew: boolean;
 
@@ -12,17 +12,13 @@ export class Entity<E> {
     this.fromObj(o);
   }
 
-  static new(): this {
-    return new this({$_isNew: true});
-  }
-
   isNew(): boolean {
     return this.$_isNew;
   }
 
   fromObj(o: any): any {
     if (Object.keys(o).length === 0) {
-      throw new Error("Empty entity can be initialized only via static .new() eg. Entity.new()")
+      throw new Error("Object cannot be empty!")
     }
     Object.keys(o).forEach(k => {
       this[k] = o[k];
