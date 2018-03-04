@@ -63,20 +63,11 @@ export class SideBarComponent implements OnInit {
       ]
     ),
     new LinkMenuModel(
-      "Permissions",
-      "glyphicon-user",
+      "Articles",
+      "glyphicon-pencil",
       null,
       [
-        new LinkMenuModel(
-          "View",
-          "glyphicon-list",
-          "/admin/users"
-        ),
-        new LinkMenuModel(
-          "Add",
-          "glyphicon-floppy-save",
-          "/admin/users/add"
-        )
+
       ]
     ),
   ];

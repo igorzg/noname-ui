@@ -66,9 +66,12 @@ export class UsersFromComponent implements OnInit {
       )
         .subscribe((values: Array<HttpResponse<Object>>) => {
           this.loader.hide();
-          this.user = new User(values[0].body);
+          let user: HttpResponse<Object> = values.shift();
+          let country: HttpResponse<Object> = values.shift();
+
+          this.user = new User(user.body);
           this.user.fillForm(this.form);
-          this.countries = Country.fromArray(<Array<any>> values[1].body);
+          this.countries = Country.fromArray(<Array<any>> country.body);
         });
     } else {
       this.user = User.new();
