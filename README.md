@@ -2,6 +2,22 @@
 
 REST api github for this project [noname](https://github.com/igorzg/noname)
 
+## Requirements
+
+1. [Node.JS](https://nodejs.org/en/)
+2. [angular cli](https://cli.angular.io/)
+
+
+## how to start
+```sh
+npm install -g @angular/cli
+npm install
+ng serve
+```
+
+Username: admin
+Password: admin
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
